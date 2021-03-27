@@ -1,13 +1,13 @@
 {
     "name": "MqttLogger",
     "keywords": "serial, mqtt, logging",
-    "description": "Provides a print() interface like Serial publishing on a mqtt broker.",
+    "description": "Remote logging on a mqtt broker with the same interface as Serial.print().",
     "repository": {
         "type": "git",
-        "url": "https://github.com/clausdenk/MqttLogger.git"
+        "url": "https://github.com/androbi-com/MqttLogger.git"
     },
     "version": "0.2.1",
-    "exclude": "tests",
+    "exclude": "examples/*/wifi_secrets.h",
     "examples": "examples/*/*.ino",
     "frameworks": "arduino",
     "platforms": [
