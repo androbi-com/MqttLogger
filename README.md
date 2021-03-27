@@ -35,9 +35,10 @@ include file to set up your WiFi connection.
 
 You'll need a MQTT broker to publish your messages to, I use [https://mosquitto.org/] 
 installed locally on my laptop. You can also use a free public service like 
-[broker.hivemq.com], but this makes logging slower (the messages have to be sent 
-to and then downloaded from the online service which can be slow). Also,
+[test.mosquitto.org] or [broker.hivemq.com], but this makes logging slower 
+(the messages have to be sent to and then downloaded from the online service). Also,
 make sure no private information like passwords is logged!
+
 The broker url is defined by the constant `mqtt_server` in the example, use
 `localhost` if you have a local install as recommended.
 
