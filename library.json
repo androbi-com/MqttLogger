@@ -1,0 +1,18 @@
+{
+    "name": "MqttLogger",
+    "keywords": "serial, mqtt, logging",
+    "description": "Provides a print() interface like Serial publishing on a mqtt broker.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/clausdenk/MqttLogger.git"
+    },
+    "version": "0.1",
+    "exclude": "tests",
+    "examples": "examples/*/*.ino",
+    "frameworks": "arduino",
+    "platforms": [
+        "atmelavr",
+        "espressif8266",
+        "espressif32"
+    ]
+}
