@@ -6,7 +6,7 @@ printing over the Serial console. This comes in handy when working with devices 
 ESP8266/ESP32 that are connected over WiFi. I use it for debugging my robots
 that are based on ESP32.
 
-The library uses (PubSubClient)[https://github.com/knolleary/pubsubclient] for sending
+The library uses [PubSubClient](https://github.com/knolleary/pubsubclient) for sending
 the MQTT messages.
 
 When no MQTT connection is available, the `MqttLogger` object behaves just like 
@@ -33,11 +33,11 @@ In this directory, rename the file `wifi_secrets.h.txt` to `wifi_secrets.h`
 and edit the file. Enter your WiFi ssid and password, the example uses this
 include file to set up your WiFi connection.
 
-You'll need a MQTT broker to publish your messages to, I use [https://mosquitto.org/] 
+You'll need a MQTT broker to publish your messages to, I use [Mosquitto](https://mosquitto.org/) 
 installed locally on my laptop. You can also use a free public service like 
-[test.mosquitto.org] or [broker.hivemq.com], but this makes logging slower 
+`test.mosquitto.org` or `broker.hivemq.com`, but this makes logging slower 
 (the messages have to be sent to and then downloaded from the online service). Also,
-make sure no private information like passwords is logged!
+make sure no private information is logged!
 
 The broker url is defined by the constant `mqtt_server` in the example, use
 `localhost` if you have a local install as recommended.
@@ -48,7 +48,7 @@ can be invoked in a terminal like
     mosquitto_sub -h localhost -t mqttlogger/log
 
 but any other mqtt client will do (on Android try MQTT Dash, hivemq has a online
-version at [http://www.hivemq.com/demos/websocket-client/]).
+version at (http://www.hivemq.com/demos/websocket-client/).
 
 ## Compatible Hardware
 

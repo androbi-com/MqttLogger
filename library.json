@@ -6,7 +6,7 @@
         "type": "git",
         "url": "https://github.com/clausdenk/MqttLogger.git"
     },
-    "version": "0.1",
+    "version": "0.2",
     "exclude": "tests",
     "examples": "examples/*/*.ino",
     "frameworks": "arduino",
