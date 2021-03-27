@@ -1,11 +1,11 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <MqttLogger.h>
+#include "wifi_secrets.h"
 
-
-const char *ssid = "WIFI_SSID";
-const char *password = "WIFI_PASSWORD";
-const char *mqtt_server =  "localhost";
+const char *ssid = WIFI_SSID;
+const char *password = WIFI_PASSWORD;
+const char *mqtt_server =  "broker.hivemq.com";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -42,7 +42,8 @@ void reconnect()
         // Attempt to connect
         if (client.connect("ESP32Logger"))
         {
-            mqttLogger.println("connected.");
+            // as we have a connection here, this will be the first message published to the mqtt server
+            mqttLogger.println("connected.");  
 
         }
         else
@@ -81,13 +82,12 @@ void loop()
         reconnect();
     }
     // with a connection, subsequent print() publish on the mqtt broker, but in a buffered fashion
-    mqttLogger.print("This");
+    
+    mqttLogger.print(millis()/1000);
     delay(1000);
-    mqttLogger.print(" text");
+    mqttLogger.print(" seconds");
     delay(1000);
-    mqttLogger.print(" is");
-    delay(1000);
-    mqttLogger.print(" buffered.");
+    mqttLogger.print(" online");
     delay(1000);
     // this finally flushes the buffer and published on the mqtt broker
     mqttLogger.println();
