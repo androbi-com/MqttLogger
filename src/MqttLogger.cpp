@@ -1,15 +1,37 @@
 #include "MqttLogger.h"
 #include "Arduino.h"
 
-MqttLogger::MqttLogger(PubSubClient& client, const char* topic, MqttLoggerMode mode)
+MqttLogger::MqttLogger(MqttLoggerMode mode)
 {
-    this->client = &client;
-    this->topic = topic;
-    this->mode = mode;
+    this->setMode(mode);
     this->setBufferSize(MQTT_MAX_PACKET_SIZE);
 }
+
+MqttLogger::MqttLogger(PubSubClient& client, const char* topic, MqttLoggerMode mode)
+{
+    this->setClient(client);
+    this->setTopic(topic);
+    this->setMode(mode);
+    this->setBufferSize(MQTT_MAX_PACKET_SIZE);
+}
+
 MqttLogger::~MqttLogger()
 {
+}
+
+void MqttLogger::setClient(PubSubClient& client)
+{
+    this->client = &client;
+}
+
+void MqttLogger::setTopic(const char* topic)
+{
+    this->topic = topic;
+}
+
+void MqttLogger::setMode(MqttLoggerMode mode)
+{
+    this->mode = mode;
 }
 
 uint16_t MqttLogger::getBufferSize()
@@ -51,8 +73,8 @@ void MqttLogger::sendBuffer()
 {
     if (this->bufferCnt > 0)
     {
-        bool doSerial = this->mode==MqttLoggerMode::SerialOnly || this->mode==MqttLoggerMode::MqttAndSerial; 
-        if (this->mode!=MqttLoggerMode::SerialOnly && this->client->connected()) 
+        bool doSerial = this->mode==MqttLoggerMode::SerialOnly || this->mode==MqttLoggerMode::MqttAndSerial;
+        if (this->mode!=MqttLoggerMode::SerialOnly && this->client != NULL && this->client->connected()) 
         {
             this->client->publish(this->topic, (byte *)this->buffer, this->bufferCnt, 1);
         } else if (this->mode == MqttLoggerMode::MqttAndSerialFallback)

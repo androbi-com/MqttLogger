@@ -32,9 +32,18 @@ private:
     void sendBuffer();
 
 public:
-    MqttLogger(PubSubClient& client, const char* topic, MqttLoggerMode mode=MqttLoggerMode::MqttAndSerialFallback); // constructor & destructor
+    MqttLogger(MqttLoggerMode mode=MqttLoggerMode::MqttAndSerialFallback);
+    MqttLogger(PubSubClient& client, const char* topic, MqttLoggerMode mode=MqttLoggerMode::MqttAndSerialFallback);
     ~MqttLogger();
+
+    void setClient(PubSubClient& client);
+    void setTopic(const char* topic);
+    void setMode(MqttLoggerMode mode);
+    void setRetained(boolean retained);
+    
     virtual size_t write(uint8_t);
+    using Print::write;
+    
     uint16_t getBufferSize();
     boolean setBufferSize(uint16_t size);
 };
