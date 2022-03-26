@@ -42,6 +42,8 @@ public:
     void setRetained(boolean retained);
     
     virtual size_t write(uint8_t);
+    using Print::write;
+    
     uint16_t getBufferSize();
     boolean setBufferSize(uint16_t size);
 };
