@@ -6,7 +6,7 @@
         "type": "git",
         "url": "https://github.com/androbi-com/MqttLogger.git"
     },
-    "version": "0.2.2",
+    "version": "0.2.3",
     "exclude": "examples/*/wifi_secrets.h",
     "examples": "examples/*/*.ino",
     "frameworks": "arduino",
