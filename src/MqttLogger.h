@@ -30,16 +30,17 @@ private:
     PubSubClient* client;
     MqttLoggerMode mode;
     void sendBuffer();
+    bool retained;
 
 public:
     MqttLogger(MqttLoggerMode mode=MqttLoggerMode::MqttAndSerialFallback);
-    MqttLogger(PubSubClient& client, const char* topic, MqttLoggerMode mode=MqttLoggerMode::MqttAndSerialFallback);
+    MqttLogger(PubSubClient& client, const char* topic, MqttLoggerMode mode=MqttLoggerMode::MqttAndSerialFallback, const boolean& retained = true);
     ~MqttLogger();
 
     void setClient(PubSubClient& client);
     void setTopic(const char* topic);
     void setMode(MqttLoggerMode mode);
-    void setRetained(boolean retained);
+    void setRetained(const boolean& retained);
     
     virtual size_t write(uint8_t);
     using Print::write;
